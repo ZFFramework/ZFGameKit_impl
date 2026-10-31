@@ -1,0 +1,14 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.ZFFramework.zfprojConfig.ZFGameKit_impl'
+    compileSdk 37
+    sourceSets {
+        main {
+            if (file(this.projectDir.absolutePath + '/../zflib/zfprojConfig/zfprojConfig.xml').exists()) {
+                manifest.srcFile this.projectDir.absolutePath + '/../zflib/zfprojConfig/zfprojConfig.xml'
+            }
+        }
+    }
+}
+

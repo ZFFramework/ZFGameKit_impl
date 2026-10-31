@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:ZFGameKit_impl.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ZFGameKit_impl_zfprojConfig.xcodeproj">
+   </FileRef>
+</Workspace>
