@@ -1,0 +1,10 @@
+
+<ZF_SET> _OLD_DIR=<ZF_PWD>
+
+<ZF_SH> "<ZF_ROOT_PATH>\tools\common\zfsh\mkdir.<ZF_SH_EXT>" "<ZF_WORK_DIR>\..\..\..\zf3rd\_repo"
+<ZF_CD> "<ZF_WORK_DIR>\..\..\..\zf3rd\_repo"
+<ZF_SET> _REPO_DIR=<ZF_PWD>
+<ZF_CD> "<ZF_PL>_OLD_DIR<ZF_PR>"
+
+<ZF_SH> "<ZF_ROOT_PATH>\tools\common\git_check.<ZF_SH_EXT>" "https://github.com/mdqinc/SDL_GameControllerDB" master "<ZF_PL>_REPO_DIR<ZF_PR>\SDL_GameControllerDB"
+
