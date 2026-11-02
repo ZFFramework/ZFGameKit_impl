@@ -35,8 +35,8 @@ ZFAddLib(ZFCore)
 ZFAddLib(ZFUtility)
 ZFAddLib(ZFAlgorithm)
 ZFAddLib(ZFUIKit)
-ZFAddLib(ZFGameKit)
 ZFAddLib(ZF_impl)
+ZFAddLib(ZFGameKit)
 
 install(
     DIRECTORY "${PROJECT_SOURCE_DIR}/../../../zfsrc/"

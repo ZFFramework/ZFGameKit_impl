@@ -5,6 +5,6 @@
 -I../../../ZFFramework/ZF/ZFUtility/zfsrc
 -I../../../ZFFramework/ZF/ZFAlgorithm/zfsrc
 -I../../../ZFFramework/ZF/ZFUIKit/zfsrc
--I../../../ZFFramework/ZF/ZFGameKit/zfsrc
 -I../../../ZFFramework/ZF/ZF_impl/zfsrc
+-I../../../ZFFramework/ZFModule/ZFGameKit/zfsrc
 

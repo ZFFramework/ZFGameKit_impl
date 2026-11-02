@@ -9,7 +9,8 @@ ZF_LIB += ZFCore
 ZF_LIB += ZFUtility
 ZF_LIB += ZFAlgorithm
 ZF_LIB += ZFUIKit
-ZF_LIB += ZFGameKit
 
 ZF_IMPL += ZF_impl
+
+ZF_LIB_EXT += https://github.com/ZFFramework/ZFGameKit
 
