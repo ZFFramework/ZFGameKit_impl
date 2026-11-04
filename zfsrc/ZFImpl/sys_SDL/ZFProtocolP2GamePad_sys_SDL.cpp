@@ -54,7 +54,7 @@ public:
             for(zfiter it = m.iter(); it; ++it) {
                 Sint16 implValue = SDL_GetGamepadAxis(impl, m.iterKey(it));
                 if(implValue != 0) {
-                    P2GamePadImpl_notifyButtonValue((zfindex)padIndex, m.iterValue(it), (zffloat)(implValue / 32768.0f));
+                    P2GamePadImpl_notifyButtonValue((zfindex)padIndex, m.iterValue(it), _axisValue(implValue));
                 }
             }
         }
@@ -78,7 +78,7 @@ public:
         _notifyButtonValue(implId, implButton, 0);
     }
     static void axisMove(ZF_IN SDL_JoystickID implId, ZF_IN SDL_GamepadAxis implAxis, ZF_IN Sint16 implValue) {
-        _notifyButtonValue(implId, implAxis, (zffloat)(implValue / 32768.0f));
+        _notifyButtonValue(implId, implAxis, _axisValue(implValue));
     }
 private:
     typedef ZFCoreMap<SDL_GamepadButton, P2GamePadButton> _ButtonMap;
@@ -122,7 +122,9 @@ private:
         _axisMapInit();
         ZFInput src = ZFInputForRes("ZFGameKit_impl/sys_SDL/gamepad/gamecontrollerdb.txt");
         if(src) {
-            SDL_AddGamepadMappingsFromIO(ZFImpl_sys_SDL_ZFInputToSDL_IOStream(src), true);
+            if (-1 == SDL_AddGamepadMappingsFromIO(ZFImpl_sys_SDL_ZFInputToSDL_IOStream(src), true)) {
+                ZFLogTrim("[P2GamePad] add mapping failed: %s", SDL_GetError());
+            }
         }
     }
     static void _implStateInit(void) {
@@ -139,6 +141,19 @@ private:
         for(int i = 0; i < count; ++i) {
             padAttach(implIds[i]);
         }
+    }
+    static zffloat _axisValue(ZF_IN Sint16 implValue) {
+        zffloat t = (zffloat)(implValue / 32767.0f);
+        if(t < -1) {
+            t = -1;
+        }
+        else if(t >= -0.03f && t <= 0.03f) {
+            t = 0;
+        }
+        else if(t > 1) {
+            t = 1;
+        }
+        return t;
     }
     static void _notifyButtonValue(ZF_IN SDL_JoystickID implId, ZF_IN SDL_GamepadButton implButton, ZF_IN zffloat value) {
         int padIndex = SDL_GetGamepadPlayerIndexForID(implId);
